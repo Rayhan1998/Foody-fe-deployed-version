@@ -9,7 +9,7 @@ function ContextProvider(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState("");
   const [savedRecipes, setSavedRecipes] = useState([]);
-  const APIKEY = process.env.API_KEY;
+  const APIKEY = process.env.APIKEY;
 
   console.log(process.env);
   return (
