@@ -22,53 +22,52 @@ export default function ResultsPage() {
 
     if (query) {
       axios
-        .get(
-          `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=1f1fe157&app_key=$adf65b2d88f6b6e7d91211344c5b19a4`
-        )
+        .get(`http://localhost:4000/searchrecipe/${query}`)
         .then(res => {
           setResults(res.data.hits);
           setgetResponse(res);
           console.log(res);
         })
         .catch(err => console.log(err));
-    } else if (query === undefined) {
-      if (foodCatigory == "meal-of-day") {
-        if (foodType !== "Dessert") {
-          axios
-            .get(
-              `https://api.edamam.com/api/recipes/v2?type=public&q=${foodType}&app_id=1f1fe157&app_key=${APIKEY}&imageSize=REGULAR&mealType=${foodType}&Main%20course`
-            )
-            .then(res => {
-              setResults(res.data.hits);
-              setgetResponse(res);
-              console.log(res);
-            })
-            .catch(err => console.log(err));
-        } else if (foodType === "Dessert") {
-          axios
-            .get(
-              `https://api.edamam.com/api/recipes/v2?type=public&q=${foodType}&app_id=1f1fe157&app_key=${APIKEY}&imageSize=REGULAR`
-            )
-            .then(res => {
-              setResults(res.data.hits);
-              setgetResponse(res);
-            })
-            .catch(err => console.log(err));
-        }
-      } else if (foodCatigory == "world-cuisine") {
-        if (foodType) {
-          axios
-            .get(
-              `https://api.edamam.com/api/recipes/v2?type=public&q=${foodType}&app_id=1f1fe157&app_key=${APIKEY}&health=vegan&cuisineType=${foodType}&imageSize=REGULAR&dishType=Main%20course`
-            )
-            .then(res => {
-              setResults(res.data.hits);
-              setgetResponse(res);
-            })
-            .catch(err => console.log(err));
-        }
-      }
     }
+    // else if (query === undefined) {
+    //   if (foodCatigory == "meal-of-day") {
+    //     if (foodType !== "Dessert") {
+    //       axios
+    //         .get(
+    //           `https://api.edamam.com/api/recipes/v2?type=public&q=${foodType}&app_id=1f1fe157&app_key=${APIKEY}&imageSize=REGULAR&mealType=${foodType}&Main%20course`
+    //         )
+    //         .then(res => {
+    //           setResults(res.data.hits);
+    //           setgetResponse(res);
+    //           console.log(res);
+    //         })
+    //         .catch(err => console.log(err));
+    //     } else if (foodType === "Dessert") {
+    //       axios
+    //         .get(
+    //           `https://api.edamam.com/api/recipes/v2?type=public&q=${foodType}&app_id=1f1fe157&app_key=${APIKEY}&imageSize=REGULAR`
+    //         )
+    //         .then(res => {
+    //           setResults(res.data.hits);
+    //           setgetResponse(res);
+    //         })
+    //         .catch(err => console.log(err));
+    //     }
+    //   } else if (foodCatigory == "world-cuisine") {
+    //     if (foodType) {
+    //       axios
+    //         .get(
+    //           `https://api.edamam.com/api/recipes/v2?type=public&q=${foodType}&app_id=1f1fe157&app_key=${APIKEY}&health=vegan&cuisineType=${foodType}&imageSize=REGULAR&dishType=Main%20course`
+    //         )
+    //         .then(res => {
+    //           setResults(res.data.hits);
+    //           setgetResponse(res);
+    //         })
+    //         .catch(err => console.log(err));
+    //     }
+    //   }
+    // }
   }, [foodType]);
 
   const loadMoreResults = request => {
