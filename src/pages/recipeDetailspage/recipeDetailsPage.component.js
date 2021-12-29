@@ -62,9 +62,7 @@ export default function RecipeDetailsPage() {
 
   useEffect(() => {
     axios
-      .get(
-        `https://api.edamam.com/api/recipes/v2/${id}?type=public&app_id=1f1fe157&app_key=${APIKEY}`
-      )
+      .get(`http://localhost:4000/recipe/${id}`)
       .then(res => {
         setRecipeDetails(res.data.recipe);
       })

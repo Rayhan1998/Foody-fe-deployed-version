@@ -73,7 +73,6 @@ export default function ResultsPage() {
       })
       .catch(err => console.log(err));
   };
-  console.log(getResponse);
 
   useEffect(() => {
     if (results.length > 0) {
