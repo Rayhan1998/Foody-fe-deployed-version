@@ -34,3 +34,9 @@
   width: 300px;
   flex-wrap: wrap;
 }
+
+.spinner {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}

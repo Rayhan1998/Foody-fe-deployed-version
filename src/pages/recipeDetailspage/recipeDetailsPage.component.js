@@ -3,6 +3,7 @@ import "./recipeDetails.styles.css";
 import Navbar from "../../components/navbar/navbar.component";
 import { Context } from "../../Context";
 import { useParams, useNavigate } from "react-router-dom";
+import { Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import {
   Image,
@@ -85,93 +86,109 @@ export default function RecipeDetailsPage() {
   return (
     <div className="recipe-details">
       <Navbar />
-      <Box mt="100px">
-        <Image
-          h="200px"
-          w="500px"
-          objectFit="cover"
-          src={recipeDetails.image}
-          alt="recipe-image"
-          m="0 auto"
-        />
-      </Box>
-      <div className="recipe-details-top">
-        <Heading color="white"> {recipeDetails.label}</Heading>
-        <Heading as="h3"> Recipe By: {recipeDetails.source}</Heading>
-        <Text fontSize="lg">servings: {Math.ceil(recipeDetails.yield)}</Text>
-        <Text fontSize="lg">calories: {Math.ceil(recipeDetails.calories)}</Text>
 
-        <Button colorScheme="orange" onClick={addRecipe} w="150px">
-          {savedRecipes.some(recipe => recipe.recipeid === id)
-            ? "remove recipe"
-            : "add recipe"}
-        </Button>
-      </div>
-      <div className="recipe-details-middle">
-        <UnorderedList display="flex" flexDirection="column">
-          <Heading color="white"> Ingredients</Heading>
-          {recipeDetails.ingredients
-            ? recipeDetails.ingredients.map((recipe, i) => {
-                return <ListItem key={i}>{recipe.text}</ListItem>;
-              })
-            : null}
-        </UnorderedList>
-        <Box>
-          <Text>
-            Click link below to get more of a breakdown on how to make this
-            recipe
-          </Text>
-          <Button colorScheme="orange">
-            <a href={recipeDetails.url} target="_blank" className="button">
-              Preperation Instructions
-            </a>
-          </Button>
-        </Box>
-      </div>
-      <div className="recipe-details-bottom">
-        <Box>
-          <Heading color="white"> Nutrtion</Heading>
-
-          {recipeDetails ? (
-            <UnorderedList display="flex" flexDirection="column">
-              <ListItem>
-                Calories: {recipeDetails.totalNutrients.ENERC_KCAL.quantity}
-              </ListItem>
-              <ListItem>
-                {" "}
-                Fat: {Math.ceil(recipeDetails.totalNutrients.FAT.quantity)}{" "}
-                grams
-              </ListItem>
-              <ListItem>
-                Protein:{" "}
-                {Math.ceil(recipeDetails.totalNutrients.PROCNT.quantity)} grams
-              </ListItem>
-              <ListItem>
-                Carbs: {Math.ceil(recipeDetails.totalNutrients.CHOCDF.quantity)}{" "}
-                grams
-              </ListItem>
-              <ListItem>
-                Fiber: {Math.ceil(recipeDetails.totalNutrients.FIBTG.quantity)}{" "}
-                grams
-              </ListItem>
-            </UnorderedList>
-          ) : null}
-        </Box>
-
-        <Box>
-          <Heading as="h2" color="white">
-            {" "}
-            Health Labels{" "}
-          </Heading>
-          <Box display="flex" className="healthlabels">
-            {recipeDetails
-              ? recipeDetails.healthLabels.map((health, i) => {
-                  return <p key={i}>{health}</p>;
-                })
-              : null}
+      {recipeDetails === "" ? (
+        <Spinner size="xl" w="250px" h="250px" className="spinner" />
+      ) : (
+        <div>
+          <Box mt="100px">
+            <Image
+              h="200px"
+              w="500px"
+              objectFit="cover"
+              src={recipeDetails.image}
+              alt="recipe-image"
+              m="0 auto"
+            />
           </Box>
-        </Box>
-      </div>
+          <div className="recipe-details-top">
+            <Heading color="white"> {recipeDetails.label}</Heading>
+            <Heading as="h3"> Recipe By: {recipeDetails.source}</Heading>
+            <Text fontSize="lg">
+              servings: {Math.ceil(recipeDetails.yield)}
+            </Text>
+            <Text fontSize="lg">
+              calories: {Math.ceil(recipeDetails.calories)}
+            </Text>
+
+            <Button colorScheme="orange" onClick={addRecipe} w="150px">
+              {savedRecipes.some(recipe => recipe.recipeid === id)
+                ? "remove recipe"
+                : "add recipe"}
+            </Button>
+          </div>
+          <div className="recipe-details-middle">
+            <UnorderedList display="flex" flexDirection="column">
+              <Heading color="white"> Ingredients</Heading>
+              {recipeDetails.ingredients
+                ? recipeDetails.ingredients.map((recipe, i) => {
+                    return <ListItem key={i}>{recipe.text}</ListItem>;
+                  })
+                : null}
+            </UnorderedList>
+            <Box>
+              <Text>
+                Click link below to get more of a breakdown on how to make this
+                recipe
+              </Text>
+              <Button colorScheme="orange">
+                <a href={recipeDetails.url} target="_blank" className="button">
+                  Preperation Instructions
+                </a>
+              </Button>
+            </Box>
+          </div>
+          <div className="recipe-details-bottom">
+            <Box>
+              <Heading color="white"> Nutrtion</Heading>
+
+              {recipeDetails ? (
+                <UnorderedList display="flex" flexDirection="column">
+                  <ListItem>
+                    Calories: {recipeDetails.totalNutrients.ENERC_KCAL.quantity}
+                  </ListItem>
+                  <ListItem>
+                    {" "}
+                    Fat: {Math.ceil(
+                      recipeDetails.totalNutrients.FAT.quantity
+                    )}{" "}
+                    grams
+                  </ListItem>
+                  <ListItem>
+                    Protein:{" "}
+                    {Math.ceil(recipeDetails.totalNutrients.PROCNT.quantity)}{" "}
+                    grams
+                  </ListItem>
+                  <ListItem>
+                    Carbs:{" "}
+                    {Math.ceil(recipeDetails.totalNutrients.CHOCDF.quantity)}{" "}
+                    grams
+                  </ListItem>
+                  <ListItem>
+                    Fiber:{" "}
+                    {Math.ceil(recipeDetails.totalNutrients.FIBTG.quantity)}{" "}
+                    grams
+                  </ListItem>
+                </UnorderedList>
+              ) : null}
+            </Box>
+
+            <Box>
+              <Heading as="h2" color="white">
+                {" "}
+                Health Labels{" "}
+              </Heading>
+              <Box display="flex" className="healthlabels">
+                {recipeDetails
+                  ? recipeDetails.healthLabels.map((health, i) => {
+                      return <p key={i}>{health}</p>;
+                    })
+                  : null}
+              </Box>
+            </Box>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
