@@ -63,7 +63,7 @@ export default function RecipeDetailsPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/recipe/${id}`)
+      .get(`https://immense-citadel-91247.herokuapp.com/recipe/${id}`)
       .then(res => {
         setRecipeDetails(res.data.recipe);
       })
@@ -140,7 +140,7 @@ export default function RecipeDetailsPage() {
           </div>
           <div className="recipe-details-bottom">
             <Box>
-              <Heading color="white"> Nutrtion</Heading>
+              <Heading color="white"> Nutrition</Heading>
 
               {recipeDetails ? (
                 <UnorderedList display="flex" flexDirection="column">

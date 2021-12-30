@@ -22,7 +22,9 @@ export default function ResultsPage() {
 
     if (query) {
       axios
-        .get(`http://localhost:4000/searchrecipe/${query}`)
+        .get(
+          `https://immense-citadel-91247.herokuapp.com/searchrecipe/${query}`
+        )
         .then(res => {
           setResults(res.data.hits);
           setgetResponse(res);
@@ -33,7 +35,9 @@ export default function ResultsPage() {
       if (foodCatigory == "meal-of-day") {
         if (foodType !== "Dessert") {
           axios
-            .get(`http://localhost:4000/findrecipe/${foodType}`)
+            .get(
+              `https://immense-citadel-91247.herokuapp.com/findrecipe/${foodType}`
+            )
             .then(res => {
               setResults(res.data.hits);
               setgetResponse(res);
@@ -42,7 +46,7 @@ export default function ResultsPage() {
             .catch(err => console.log(err));
         } else if (foodType === "Dessert") {
           axios
-            .get(`http://localhost:4000/findrecipe/${foodType}`)
+            .get(`/findrecipe/${foodType}`)
             .then(res => {
               setResults(res.data.hits);
               setgetResponse(res);
@@ -52,7 +56,9 @@ export default function ResultsPage() {
       } else if (foodCatigory == "world-cuisine") {
         if (foodType) {
           axios
-            .get(`http://localhost:4000/findcuisine/${foodType}`)
+            .get(
+              `https://immense-citadel-91247.herokuapp.com/http://localhost:4000/findcuisine/${foodType}`
+            )
             .then(res => {
               setResults(res.data.hits);
               setgetResponse(res);
