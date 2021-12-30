@@ -9,9 +9,7 @@ function ContextProvider(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState("");
   const [savedRecipes, setSavedRecipes] = useState([]);
-  const APIKEY = process.env.APIKEY;
 
-  console.log(process.env);
   return (
     <Context.Provider
       value={{
@@ -24,8 +22,7 @@ function ContextProvider(props) {
         userData,
         setUserData,
         savedRecipes,
-        setSavedRecipes,
-        APIKEY
+        setSavedRecipes
       }}
     >
       {props.children}

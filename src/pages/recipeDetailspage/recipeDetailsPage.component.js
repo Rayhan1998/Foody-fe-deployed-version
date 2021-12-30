@@ -165,8 +165,8 @@ export default function RecipeDetailsPage() {
           </Heading>
           <Box display="flex" className="healthlabels">
             {recipeDetails
-              ? recipeDetails.healthLabels.map(health => {
-                  return <p>{health}</p>;
+              ? recipeDetails.healthLabels.map((health, i) => {
+                  return <p key={i}>{health}</p>;
                 })
               : null}
           </Box>
