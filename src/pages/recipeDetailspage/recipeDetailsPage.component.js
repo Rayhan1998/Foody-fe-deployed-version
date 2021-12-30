@@ -91,7 +91,7 @@ export default function RecipeDetailsPage() {
           w="500px"
           objectFit="cover"
           src={recipeDetails.image}
-          alt="Dan Abramov"
+          alt="recipe-image"
           m="0 auto"
         />
       </Box>
