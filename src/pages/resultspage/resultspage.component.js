@@ -57,7 +57,7 @@ export default function ResultsPage() {
         if (foodType) {
           axios
             .get(
-              `https://immense-citadel-91247.herokuapp.com/http://localhost:4000/findcuisine/${foodType}`
+              `https://immense-citadel-91247.herokuapp.com/findcuisine/${foodType}`
             )
             .then(res => {
               setResults(res.data.hits);
