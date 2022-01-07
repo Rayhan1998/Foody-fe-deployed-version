@@ -7,6 +7,9 @@ Recipe API used for this app: https://www.edamam.com/
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+Need copy of backend downloaded on machine to have server running
+Link to backend repo for download: https://github.com/Rayhan1998/FOODY-BE-Deployed-
+
 ### Prerequisites
 
 What things you need to install the software and how to install them
