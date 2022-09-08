@@ -25,7 +25,7 @@ npm install npm@latest -g
 1. Clone the repo
 
 ```
-git clone https://github.com/Rayhan1998/brightPaths-foundations-capstone.git
+git clone https://github.com/Rayhan1998/Foody-fe-deployed-version.git
 ```
 
 2. Run npm install inside project root directory
